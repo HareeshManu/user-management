@@ -4,7 +4,9 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
-
+import {
+  Alert
+} from "react-bootstrap";
 const initialValues = {
   username: "manu",
   password: "",
@@ -25,6 +27,7 @@ const LoginSchema = Yup.object().shape({
 function Login(props: any) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [loginFailure, setLoginFailure] = useState(false)
   useEffect(() => {
     dispatch(actions.getAllUsers());
   }, []);
@@ -36,9 +39,11 @@ function Login(props: any) {
       setTimeout(() => {
         actions.login(values.username, values.password)()
           .then((resp:any) => {
-            console.log('resp', resp);
             if(resp.data === "success"){
               history.push("/home");
+            }
+            else{
+              setLoginFailure(true);
             }
            
           })
@@ -54,13 +59,9 @@ function Login(props: any) {
         <form
         onSubmit={formik.handleSubmit}
         >
-           {formik.status ? (
-          <div className="mb-10 alert alert-custom alert-light-danger alert-dismissible">
-            <div className="alert-text font-weight-bold">{formik.status}</div>
-          </div>
-        ) : (
-          <></>
-        )}
+          {loginFailure && <Alert variant="danger">
+            Invalid login details
+          </Alert>}
 
                 <h3>Sign In</h3>
 

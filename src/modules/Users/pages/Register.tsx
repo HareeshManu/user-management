@@ -66,7 +66,6 @@ export const Register = (props: any) => {
         actions
           .createUser(values)()
           .then((resp: any) => {
-            console.log("success login", resp);
             history.push("home");
           })
           .catch(() => {
@@ -107,7 +106,7 @@ export const Register = (props: any) => {
                       <Field
                         type="text"
                         className="form-control input--style-4"
-                        placeholder="Enter email"
+                        placeholder="Enter First Name"
                         name="firstname"
                       />
                     </div>
@@ -118,7 +117,7 @@ export const Register = (props: any) => {
                       <Field
                         type="text"
                         className="form-control input--style-4"
-                        placeholder="Enter email"
+                        placeholder="Enter Last Name"
                         name="lastname"
                       />
                     </div>
@@ -133,6 +132,7 @@ export const Register = (props: any) => {
                         <DatePicker
                           name="dob"
                           className="form-control input--style-4"
+                          placeholder="Enter User Name"
                         />
                         {/* <i className="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i> */}
                       </div>
@@ -174,7 +174,7 @@ export const Register = (props: any) => {
                       <Field
                         type="text"
                         className="form-control input--style-4"
-                        placeholder="Enter email"
+                        placeholder="Enter User Name"
                         name="username"
                       />
                     </div>

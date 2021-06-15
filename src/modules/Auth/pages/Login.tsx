@@ -8,7 +8,7 @@ import {
   Alert
 } from "react-bootstrap";
 const initialValues = {
-  username: "manu",
+  username: "",
   password: "",
 };
 
@@ -67,7 +67,7 @@ function Login(props: any) {
 
                 <div className="form-group">
                     <label>User Name</label>
-                    <input type="text" className="form-control" placeholder="Enter email"
+                    <input type="text" className="form-control" placeholder="Enter Username"
                     {...formik.getFieldProps("username")}
                     />
                       {formik.touched.username && formik.errors.username ? (
@@ -79,7 +79,7 @@ function Login(props: any) {
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password"   {...formik.getFieldProps("password")}/>
+                    <input type="password" className="form-control" placeholder="Enter Password"   {...formik.getFieldProps("password")}/>
                     {formik.touched.password && formik.errors.password ? (
             <div className="fv-plugins-message-container">
               <div className="fv-help-block">{formik.errors.password}</div>

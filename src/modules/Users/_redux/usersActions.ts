@@ -29,7 +29,7 @@ export const getAllUsers = () => (dispatch: any) => {
     var filteredUser = [];
         if(response){
             filteredUser = JSON.parse(response).filter(function(item: any){
-                return item.user?.name?.first.indexOf(key) > -1;
+                return item.user?.name?.first?.toLowerCase().indexOf(key) > -1;
                });
         }        
         dispatch(actions.getUserList(filteredUser));
